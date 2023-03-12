@@ -91,10 +91,28 @@ header {
   text-decoration-line: none;
   color: var(--title-color);
   display: block;
+  position: relative;
+  transition-property: color;
+  transition-duration: 250ms;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
 }
 .nav-link:hover,
 .nav-link:focus {
   color: var(--hover-color);
+}
+.nav-link.active {
+  color: var(--hover-color);
+}
+.nav-link.active::after {
+  content: "";
+  width: 100%;
+  border-radius: 2px;
+  height: 4px;
+  background-color: var(--hover-color);
+  display: block;
+  position: absolute;
+  left: 0;
+  bottom: -1px;
 }
 .header-address :hover,
 .header-address:focus {
@@ -113,6 +131,9 @@ header {
   letter-spacing: 0.02em;
   text-decoration-line: none;
   color: #434455;
+  transition-property: color;
+  transition-duration: 250ms;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .header-tel {
@@ -122,6 +143,9 @@ header {
   letter-spacing: 0.02em;
   text-decoration-line: none;
   color: #434455;
+  transition-property: color;
+  transition-duration: 250ms;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
 }
 /*--------------------- Banner -------------------------*/
 .banner {
@@ -168,10 +192,16 @@ header {
   justify-content: center;
   align-items: center;
   border-radius: 4px;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.15);
+  transition-property: color, background-color, box-shadow;
+  transition-duration: 250ms;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
 }
+
 .banner-btn:hover,
 .banner-btn:focus {
   background-color: #404bbf;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.15);
 }
 .banner-text {
   font-weight: 500;
@@ -333,10 +363,16 @@ header {
   border-radius: 50%;
   background-color: #4d5ae5;
   color: #f4f4fd;
+  transition-property: color, background-color;
+  transition-duration: 250ms;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .team-social-icon {
   fill: currentColor;
+  transition-property: color, background-color;
+  transition-duration: 250ms;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
 }
 /* --------------------------- Customers-------------------------- */
 .customers {
@@ -373,6 +409,9 @@ header {
   width: 100%;
   height: 100%;
   color: #8e8f99;
+  transition-property: color, background-color;
+  transition-duration: 250ms;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
 }
 .customers-link:hover,
 .customers-link:focus {
@@ -457,6 +496,9 @@ header {
   height: 100%;
   border-radius: 50%;
   background: rgba(255, 255, 255, 0.1);
+  transition-property: color, background-color;
+  transition-duration: 250ms;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
 }
 .social-media-link:hover,
 .social-media-link:focus {
@@ -495,6 +537,9 @@ header {
   padding: 12px 24px;
   border: 1px solid #e7e9fc;
   border-radius: 4px;
+  transition: color, background-color, box-shadow, border;
+  transition-duration: 250ms;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
 }
 .choise-btn:hover,
 .choise-btn:focus {
@@ -503,7 +548,6 @@ header {
   box-shadow: 0px 3px 1px rgba(0, 0, 0, 0.1), 0px 2px 1px rgba(0, 0, 0, 0.08),
     0px 2px 2px rgba(0, 0, 0, 0.12);
   border-radius: 4px;
-
   border-color: transparent;
 }
 .choise-list-photo {
@@ -521,6 +565,9 @@ header {
 .choise-link {
   text-decoration-line: none;
   display: block;
+  transition-property: box-shadow;
+  transition-duration: 250ms;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
 }
 .choise-link:hover,
 .choise-link:focus {
@@ -531,7 +578,35 @@ header {
 .choise-link img {
   display: block;
 }
-
+.choise-text-overlay {
+  color: #f4f4fd;
+  background-color: #4d5ae5;
+  width: 100%;
+  height: 100%;
+  margin: 0 auto;
+  position: absolute;
+  top: 0;
+  left: 0;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 1.5;
+  letter-spacing: 0.02em;
+  padding-top: 40px;
+  padding-left: 32px;
+  padding-right: 32px;
+  padding-bottom: 164px;
+  transform: translateY(100%);
+  transition-property: transform;
+  transition-duration: 250ms;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+}
+.choise-wrap {
+  position: relative;
+  overflow: hidden;
+}
+.choise-link:hover .choise-text-overlay {
+  transform: translateY(0);
+}
 .choise-title {
   font-weight: 500;
   font-size: 20px;
@@ -554,4 +629,59 @@ header {
   border-top: 0;
   padding: 32px 16px;
   margin: 0 auto;
+}
+.backdrop {
+  width: 100%;
+  height: 100%;
+  background-color: rgba(46, 47, 66, 0.4);
+  position: fixed;
+  top: 0;
+  left: 0;
+}
+.modal {
+  width: 408px;
+  height: 576px;
+  background-color: #fcfcfc;
+  border-radius: 4px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) scale(1);
+  padding: 24px;
+  transition: transform 250ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+.modal-close {
+  display: flex;
+  margin-left: auto;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background-color: #e7e9fc;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  color: #000;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  transition-property: color, background-color;
+  transition-duration: 250ms;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+}
+.modal-close:hover,
+.modal-close:focus {
+  background-color: #404bbf;
+  color: #ffffff;
+  border-radius: 4px;
+  border-radius: 50%;
+}
+
+.modal-button {
+  fill: currentColor;
+}
+.is-hidden {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+}
+.backdrop.is-hidden .modal {
+  transform: translate(-50%, -50%) scale(0);
 }
